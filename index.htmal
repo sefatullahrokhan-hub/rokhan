@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>زما ویب‌پاڼه</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      text-align: center;
+    }
+    header {
+      background: #123c69;
+      color: white;
+      padding: 35px 15px;
+    }
+    main {
+      max-width: 700px;
+      margin: 35px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+    }
+    a {
+      color: #087e8b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>زما ویب‌پاڼې ته ښه راغلاست</h1>
+    <p>زما شخصي ویب‌پاڼه</p>
+  </header>
+  <main>
+    <h2>زما په اړه</h2>
+    <p>دلته خپل معلومات، تجربې او لاسته راوړنې ولیکئ.</p>
+    <h2>زما فعالیتونه</h2>
+    <p>دلته خپلې پروژې او څېړنې معرفي کړئ.</p>
+    <a href="https://github.com/">زما GitHub حساب</a>
+  </main>
+</body>
+</html>
