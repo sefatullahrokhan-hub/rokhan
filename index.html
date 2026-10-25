@@ -229,17 +229,30 @@
         gap: 14px;
       }
 
-       hero.jpg{
-        padding: 60px 0;
-      }
+.hero {
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+  padding: 90px 0;
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url("hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
+.hero h1 {
+  color: white;
+}
 
-      .newsletter form {
-        flex-direction: column;
-      }
+.hero p {
+  color: white;
+}
+
     }
   </style>
 </head>
