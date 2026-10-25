@@ -1,46 +1,425 @@
 
 <!DOCTYPE html>
-<html lang="ps" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>زما ویب‌پاڼه</title>
+  <meta name="description" content="Personal website featuring technology, research, books and ideas.">
+  <title>My Notes | Personal Website</title>
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #087b55;
+      --dark: #17352b;
+      --light: #f5f7f4;
+      --text: #242824;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: #f1f5f9;
-      color: #1e293b;
+      color: var(--text);
+      line-height: 1.7;
+      background: white;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid #e5e8e5;
+      background: white;
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      background: var(--light);
+      padding: 90px 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.15;
+      max-width: 760px;
+      margin-bottom: 24px;
+      color: var(--dark);
+    }
+
+    .hero p {
+      font-size: 19px;
+      max-width: 680px;
+      margin-bottom: 30px;
+      color: #505a53;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 65px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: 30px;
+      color: var(--dark);
+    }
+
+    .section-heading p {
+      color: #68716b;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      border: 1px solid #e4e8e4;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px #00000010;
+    }
+
+    .card-image {
+      min-height: 160px;
+      display: grid;
+      place-items: center;
+      background: #e7efe9;
+      font-size: 48px;
+    }
+
+    .card-content {
+      padding: 22px;
+    }
+
+    .category {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 8px 0 12px;
+      line-height: 1.35;
+    }
+
+    .card p {
+      color: #626a64;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .about {
+      background: var(--light);
+    }
+
+    .about p {
+      max-width: 780px;
+      font-size: 18px;
+      margin-top: 16px;
+    }
+
+    .newsletter {
       text-align: center;
     }
-    header {
-      background: #123c69;
+
+    .newsletter p {
+      margin: 12px 0 24px;
+      color: #626a64;
+    }
+
+    .newsletter form {
+      display: flex;
+      gap: 10px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid #ccd3cd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    footer {
+      background: var(--dark);
       color: white;
-      padding: 35px 15px;
+      padding: 30px 0;
+      text-align: center;
     }
-    main {
-      max-width: 700px;
-      margin: 35px auto;
-      padding: 25px;
-      background: white;
-      border-radius: 12px;
+
+    footer p {
+      color: #d6e0da;
     }
-    a {
-      color: #087e8b;
+
+    @media (max-width: 760px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px 0;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter form {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <header>
-    <h1>زما ویب‌پاڼې ته ښه راغلاست</h1>
-    <p>زما شخصي ویب‌پاڼه</p>
+    <nav class="container">
+      <a class="logo" href="#">My Notes</a>
+
+      <div class="nav-links">
+        <a href="#articles">Articles</a>
+        <a href="#research">Research</a>
+        <a href="#about">About Me</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
   </header>
+
   <main>
-    <h2>زما په اړه</h2>
-    <p>دلته خپل معلومات، تجربې او لاسته راوړنې ولیکئ.</p>
-    <h2>زما فعالیتونه</h2>
-    <p>دلته خپلې پروژې او څېړنې معرفي کړئ.</p>
-    <a href="https://github.com/">زما GitHub حساب</a>
+    <section class="hero">
+      <div class="container">
+        <h1>Ideas, Technology and a Better Future</h1>
+
+        <p>
+          Welcome to my personal website. Here I share
+          my ideas, research, books, technology news
+          and lessons learned throughout my career.
+        </p>
+
+        <a class="button" href="#articles">
+          Explore My Articles
+        </a>
+      </div>
+    </section>
+
+    <section id="articles">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Latest Articles</h2>
+          <p>Ideas and insights worth exploring.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-image">🤖</div>
+            <div class="card-content">
+              <span class="category">Technology</span>
+              <h3>The Future of Artificial Intelligence</h3>
+              <p>
+                How AI is changing our work, education
+                and everyday lives.
+              </p>
+              <a class="read-more" href="#contact">
+                Read more →
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image">🔬</div>
+            <div class="card-content">
+              <span class="category">Research</span>
+              <h3>Why Research and Innovation Matter</h3>
+              <p>
+                Exploring the role of research in
+                solving important challenges.
+              </p>
+              <a class="read-more" href="#research">
+                Read more →
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image">📚</div>
+            <div class="card-content">
+              <span class="category">Books</span>
+              <h3>Books That Inspire New Ideas</h3>
+              <p>
+                Lessons from books about technology,
+                leadership and personal growth.
+              </p>
+              <a class="read-more" href="#about">
+                Read more →
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>About Me</h2>
+        </div>
+
+        <p>
+          I am a technology and research professional
+          interested in digital transformation,
+          information technology, innovation and
+          knowledge sharing.
+        </p>
+
+        <p>
+          This website is my personal space to share
+          professional experience, research activities,
+          projects and ideas for the future.
+        </p>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Research & Projects</h2>
+          <p>
+            Discover my research interests, technical
+            projects and professional achievements.
+          </p>
+        </div>
+
+        <a class="button"
+           href="https://github.com/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Explore GitHub
+        </a>
+      </div>
+    </section>
+
+    <section class="newsletter" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Stay Connected</h2>
+        </div>
+
+        <p>
+          Subscribe to receive updates and new articles.
+        </p>
+
+        <form id="newsletter-form">
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email address"
+            aria-label="Email address"
+            required
+          >
+
+          <button class="button" type="submit">
+            Subscribe
+          </button>
+        </form>
+
+        <p id="message" role="status"></p>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> My Notes. All rights reserved.</p>
+      <p>Ideas • Research • Technology</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("newsletter-form")
+      .addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        document.getElementById("message").textContent =
+          "This is a demo. Newsletter subscription is not connected yet.";
+      });
+  </script>
+
 </body>
 </html>
